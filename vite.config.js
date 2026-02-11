@@ -5,9 +5,19 @@ export default {
     root: 'src/',
     publicDir: '../static/',
     base: './',
-    plugins:
-    [
-        restart({ restart: [ '../static/**', ] }),
-        glsl() 
-    ]
+    plugins: [
+        restart({ restart: ['../static/**'] }),
+        glsl()
+    ],
+    build: {
+        outDir: '../dist',
+        emptyOutDir: true,
+        rollupOptions: {
+            output: {
+                manualChunks: {
+                    three: ['three']
+                }
+            }
+        }
+    }
 }
